@@ -26,9 +26,13 @@ _styles: >
 
   .reading-controls { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 0.78rem; line-height: 1.3; letter-spacing: 0; word-spacing: 0; margin: -1.2rem 0 2.5rem; }
 
-  .rc-panel { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; padding: 0.6rem 0; border-top: 1px solid var(--global-divider-color); border-bottom: 1px solid var(--global-divider-color); }
+  .rc-panel { width: fit-content; max-width: 100%; display: grid; grid-template-columns: auto 1fr; column-gap: 1.1rem; row-gap: 0.55rem; align-items: center; padding: 0.75rem 0; border-top: 1px solid var(--global-divider-color); border-bottom: 1px solid var(--global-divider-color); }
 
-  .rc-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; font-weight: 600; color: var(--global-theme-color); }
+  .rc-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.3rem; }
+
+  .rc-why { margin-left: auto; color: var(--global-theme-color); text-decoration: underline; text-underline-offset: 3px; font-style: italic; }
+
+  .rc-title { grid-row: span 2; font-family: 'Source Serif 4', Georgia, serif; font-size: 1.6rem; font-weight: 600; color: var(--global-theme-color); }
 
   .rc-row { display: inline-flex; align-items: center; gap: 0.3rem; }
 
@@ -67,12 +71,17 @@ _styles: >
 
 <div class="reading-controls" markdown="0" data-subtitle="{{ page.description | escape }}">
   <div id="rc-panel" class="rc-panel" role="group" aria-label="Reading settings"><span class="rc-title" aria-hidden="true">Aa</span>
+   <div class="rc-line">
     <div class="rc-row"><span class="rc-label">Size</span><div class="rc-group"><button type="button" class="rc-size" data-step="-1" aria-label="Smaller text">A&minus;</button><span class="rc-value" id="rc-size-val" aria-live="polite"></span><button type="button" class="rc-size" data-step="1" aria-label="Larger text">A+</button></div></div>
     <div class="rc-row"><span class="rc-label">Lines</span><div class="rc-group" data-key="lh"><button type="button" data-v="1.5">Tight</button><button type="button" data-v="1.8">Normal</button><button type="button" data-v="2.1">Loose</button></div></div>
     <div class="rc-row"><span class="rc-label">Letters</span><div class="rc-group" data-key="ls"><button type="button" data-v="0">Normal</button><button type="button" data-v="0.04">Wide</button><button type="button" data-v="0.08">Wider</button></div></div>
+   </div>
+   <div class="rc-line">
     <div class="rc-row"><span class="rc-label">Width</span><div class="rc-group" data-key="w"><button type="button" data-v="38rem">Narrow</button><button type="button" data-v="48rem">Medium</button><button type="button" data-v="none">Full</button></div></div>
     <div class="rc-row"><span class="rc-label">Font</span><div class="rc-group" data-key="font"><button type="button" data-v="serif">Serif</button><button type="button" data-v="sans">Sans</button></div></div>
     <button type="button" class="rc-reset" aria-label="Reset reading settings" title="Reset">&#8634;</button>
+    <a class="rc-why" href="{{ '/reading-settings/' | relative_url }}">Why these options? &rarr;</a>
+   </div>
   </div>
 </div>
 <script>
@@ -137,7 +146,7 @@ _styles: >
 >
 > — 史铁生《我的梦想》 (Shi Tiesheng, *My Dream*; my own rough translation)
 
-One autistic woman I interviewed could not follow lectures in college. The lectures moved faster than she could assemble the logic, and no one suggested that she might simply process information differently. She concluded that she was not smart enough. So she taught herself, top-down from an outline and at her own pace, and she has now spent more than five years in quantitative finance, one of its most competitive fields. She found her route. What stays with me is how much of it she had to find alone. Others I interviewed had less room to find theirs; several changed jobs almost every year.
+One autistic woman I interviewed could not follow lectures in college. The lectures moved faster than she could assemble the logic, and no one suggested that she might simply process information differently. She concluded that she was not smart enough. So she taught herself, top-down from an outline and at her own pace, and she has now spent more than five years in one of the most competitive fields in finance. She found her route. What stays with me is how much of it she had to find alone. Others I interviewed had less room to find theirs; several changed jobs almost every year.
 
 *Accounts come from pilot interviews conducted in Fall 2026, ahead of a full ethnographic study planned for Spring 2027. They are shared with permission, and identifying details have been changed.*
 
