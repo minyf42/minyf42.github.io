@@ -2,6 +2,7 @@
 layout: page
 title: Passing the Metric, Failing the Reader
 description: Do LLM rewrites for autistic readers keep the meaning, or only look simpler?
+redirect: /papers/neuro-friendly-llm/
 stage: Independent research
 affiliation: NYU Shanghai, with Prof. Hua Shen
 status: Mar 2026 – Present
