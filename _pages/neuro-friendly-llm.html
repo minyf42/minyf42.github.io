@@ -1,263 +1,108 @@
 ---
-layout: null
+layout: page
 title: "Does “autism-friendly” AI text actually communicate?"
+description: "Work in progress · Updated November 2026"
 permalink: /papers/neuro-friendly-llm/
 nav: false
 sitemap: false
 ---
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Does Autism-Friendly AI Text Communicate?</title>
-<meta name="description" content="Work in progress: when language models write for autistic readers, readability scores rise while content coverage falls.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,800;1,400&display=swap">
-<style>
-/* Layout: single reading column (~68ch) with wider breakout for the chart and the example. */
-:root {
-  --bg: #f6f8f9;
-  --surface: #ffffff;
-  --fg: #172227;
-  --muted: #56656d;
-  --rule: #d5dde1;
-  --accent: #1f5f6e;          /* neutral prompt / site accent */
-  --accent-soft: #e3eef0;
-  --asd: #b4532a;             /* autism-label prompt */
-  --asd-soft: #f7e6dc;
-  --plain: #56656d;
-  --ok: #2c6b3f;  --ok-soft: #dcecdf;
-  --prog: #7a5a12; --prog-soft: #f2e8cf;
-  --block: #9a3d1c; --block-soft: #f6dccf;
-  --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, "SF Mono", Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #11181b; --surface: #182227; --fg: #e4ebee; --muted: #9aaab2; --rule: #2c3a40;
-    --accent: #6fb6c4; --accent-soft: #1c3138; --asd: #e8915f; --asd-soft: #3a2519; --plain: #9aaab2;
-    --ok: #8fd0a2; --ok-soft: #1d3324; --prog: #e2c271; --prog-soft: #352c15; --block: #f0a07c; --block-soft: #3b2219;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #11181b; --surface: #182227; --fg: #e4ebee; --muted: #9aaab2; --rule: #2c3a40;
-  --accent: #6fb6c4; --accent-soft: #1c3138; --asd: #e8915f; --asd-soft: #3a2519; --plain: #9aaab2;
-  --ok: #8fd0a2; --ok-soft: #1d3324; --prog: #e2c271; --prog-soft: #352c15; --block: #f0a07c; --block-soft: #3b2219;
-  color-scheme: dark;
-}
 
-* { box-sizing: border-box; }
-body {
-  margin: 0; background: var(--bg); color: var(--fg);
-  font: 17px/1.6 var(--font-body);
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 40px 64px;
-}
-main { max-width: 760px; margin: 0 auto; display: grid; gap: 56px; }
-section { display: grid; gap: 14px; min-width: 0; }
-.prose { max-width: 68ch; }
-h1, h2, h3 { text-wrap: balance; line-height: 1.2; margin: 0; }
-h1 { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 800; letter-spacing: -0.015em; }
-h2 { font-size: 1.45rem; font-weight: 800; }
-h3 { font-size: 1.05rem; font-weight: 600; }
-p { margin: 0; }
-a { color: var(--accent); text-underline-offset: 2px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.label {
-  font: 600 0.74rem/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
-}
-.muted { color: var(--muted); }
-.small { font-size: 0.88rem; }
-code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
-ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+<div class="wip">
+  <p>When a language model is told the reader is autistic, its answers <strong>score better on readability and cover less of the content</strong>. The accessibility measures in use today can’t see the difference, because they only look at words and sentences.</p>
+  <p class="wip-muted">Minyue Fan · Pre-doctoral Research Assistant, NYU Shanghai · Faculty supporter: <a href="https://hua-shen.org/">Prof. Hua Shen</a></p>
 
-/* Header */
-header { display: grid; gap: 16px; }
-.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-.lede { font-size: 1.2rem; line-height: 1.5; max-width: 60ch; }
-.lede mark { background: none; color: inherit; font-weight: 600; }
-.k-asd { color: var(--asd); font-weight: 600; }
-.k-neu { color: var(--accent); font-weight: 600; }
+  <h2>Why this matters</h2>
+  <p>The measures validated for judging text accessibility for autistic readers work at the level of words and sentences: word frequency, sentence length, overlap between neighbouring sentences. None of them checks whether a passage still says everything it needs to, or whether the links between ideas are stated or left for the reader to fill in.</p>
+  <p>So a model can be rewarded for text that looks easier and says less. That is a fairness problem. The reader who disclosed being autistic gets the thinner answer, and the scores tell everyone it was the better one.</p>
 
-/* Chart */
-.figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; display: grid; gap: 14px; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.88rem; color: var(--muted); }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-.dot.neu { background: var(--accent); }
-.dot.asd { background: var(--asd); }
-.dot.plain { border: 2px solid var(--plain); background: transparent; }
-.panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.panel { min-width: 0; display: grid; gap: 4px; }
-.panel svg { width: 100%; height: auto; display: block; overflow: visible; }
-.panel svg text { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
-.panel svg .model { fill: var(--fg); font-family: var(--font-body); font-size: 12.5px; }
-.panel svg .grid { stroke: var(--rule); stroke-width: 1; }
-.panel svg .link { stroke: var(--muted); stroke-width: 2; opacity: .45; }
-.panel svg .neu { fill: var(--accent); }
-.panel svg .asd { fill: var(--asd); }
-.panel svg .plain { fill: var(--surface); stroke: var(--plain); stroke-width: 1.6; }
-.dir { font-size: 0.85rem; color: var(--muted); }
+  <h2>First result: simpler style, thinner content</h2>
+  <p>I asked five models the same 32 explanation questions under three prompts: a <span class="k-neu">neutral</span> prompt, one saying the reader is <span class="k-asd">autistic</span>, and one asking for <strong>plain, explicit</strong> writing without mentioning autism. Each answer was scored for readability and for how many of the question’s expected key points it covered.</p>
 
-/* Example */
-.example { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
-.answer { border: 1px solid var(--rule); border-radius: 6px; padding: 16px; background: var(--surface); display: grid; gap: 10px; align-content: start; min-width: 0; }
-.answer.asd { border-top: 4px solid var(--asd); }
-.answer.neu { border-top: 4px solid var(--accent); }
-.stats { display: flex; flex-wrap: wrap; gap: 4px 14px; font: 0.82rem/1.4 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
-.stats b { color: var(--fg); font-weight: 600; }
-.kps { list-style: none; padding: 0; display: grid; gap: 6px; font-size: 0.93rem; }
-.kps li { display: grid; grid-template-columns: 1.4em 1fr; gap: 4px; }
-.kps .hit::before { content: "✓"; color: var(--ok); font-weight: 800; }
-.kps .miss { color: var(--muted); }
-.kps .miss::before { content: "✗"; color: var(--block); font-weight: 800; }
-blockquote { margin: 0; padding-left: 12px; border-left: 2px solid var(--rule); font-size: 0.93rem; color: var(--muted); font-style: italic; }
-.question { background: var(--accent-soft); border-radius: 6px; padding: 12px 16px; }
-
-/* Status */
-.status-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-.status-wrap { overflow-x: auto; }
-.status-table td { padding: 10px 10px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-.status-table td:first-child { width: 7.5em; }
-.tag { display: inline-block; font: 600 0.72rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 7px; border-radius: 3px; white-space: nowrap; }
-.tag.done { background: var(--ok-soft); color: var(--ok); }
-.tag.prog { background: var(--prog-soft); color: var(--prog); }
-.tag.plan { background: var(--accent-soft); color: var(--accent); }
-.tag.block { background: var(--block-soft); color: var(--block); }
-
-/* Ask */
-.ask { border: 2px solid var(--accent); border-radius: 6px; padding: 20px; display: grid; gap: 12px; }
-.ask-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.ask-grid > div { display: grid; gap: 6px; align-content: start; }
-.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
-.contact .addr { font-family: var(--font-mono); background: var(--accent-soft); padding: 4px 8px; border-radius: 3px; user-select: all; }
-button { font: 600 0.85rem var(--font-body); color: var(--accent); background: transparent; border: 1px solid var(--accent); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
-
-footer { border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 6px; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-</style>
-</head>
-<body>
-
-<main>
-  <header>
-    <div class="meta">
-      <span class="label">Work in progress</span>
-      <span class="label">Updated November 2026</span>
+  <div class="figure" role="figure" aria-labelledby="fig-cap">
+    <div class="legend" aria-hidden="true">
+      <span><i class="dot neu"></i>Neutral prompt</span>
+      <span><i class="dot asd"></i>“Reader is autistic” prompt</span>
+      <span><i class="dot plain"></i>“Plain and explicit” prompt</span>
     </div>
-    <h1>Does “autism-friendly” AI text actually communicate?</h1>
-    <p class="lede">When a language model is told the reader is autistic, its answers <mark>score better on readability and cover less of the content</mark>. The accessibility measures in use today can’t see the difference, because they only look at words and sentences.</p>
-    <p class="muted small">Minyue Fan · Pre-doctoral Research Assistant, NYU Shanghai · Faculty supporter: <a href="https://hua-shen.org/">Prof. Hua Shen</a></p>
-  </header>
-
-  <section class="prose">
-    <h2>Why this matters</h2>
-    <p>The measures validated for judging text accessibility for autistic readers work at the level of words and sentences: word frequency, sentence length, overlap between neighbouring sentences. None of them checks whether a passage still says everything it needs to, or whether the links between ideas are stated or left for the reader to fill in.</p>
-    <p>So a model can be rewarded for text that looks easier and says less. That is a fairness problem. The reader who disclosed being autistic gets the thinner answer, and the scores tell everyone it was the better one.</p>
-  </section>
-
-  <section>
-    <h2>First result: simpler style, thinner content</h2>
-    <p class="prose">I asked five models the same 32 explanation questions under three prompts: a <span class="k-neu">neutral</span> prompt, one saying the reader is <span class="k-asd">autistic</span>, and one asking for <strong>plain, explicit</strong> writing without mentioning autism. Each answer was scored for readability and for how many of the question’s expected key points it covered.</p>
-
-    <div class="figure" role="figure" aria-labelledby="fig-cap">
-      <div class="legend" aria-hidden="true">
-        <span><i class="dot neu"></i>Neutral prompt</span>
-        <span><i class="dot asd"></i>“Reader is autistic” prompt</span>
-        <span><i class="dot plain"></i>“Plain and explicit” prompt</span>
+    <div class="panels">
+      <div class="panel">
+        <h3>Key points covered</h3>
+        <p class="wip-muted">Share of expected points the answer includes. Higher is better.</p>
+        <svg id="chart-kp" viewBox="0 0 340 236" role="img" aria-label="Key-point coverage falls under the autism prompt for all five models."></svg>
       </div>
-      <div class="panels">
-        <div class="panel">
-          <h3>Key points covered</h3>
-          <p class="dir">Share of expected points the answer includes. Higher is better.</p>
-          <svg id="chart-kp" viewBox="0 0 340 236" role="img" aria-label="Key-point coverage falls under the autism prompt for all five models."></svg>
-        </div>
-        <div class="panel">
-          <h3>Readability score</h3>
-          <p class="dir">Flesch Reading Ease. Higher means simpler wording.</p>
-          <svg id="chart-fre" viewBox="0 0 340 236" role="img" aria-label="Readability rises under the autism prompt for all five models."></svg>
-        </div>
-      </div>
-      <p id="fig-cap" class="small muted">Mean over 32 questions per prompt for each model (96 answers per model). Pro was collected through the Gemini web app, not the API. Coverage uses a provisional word-matching measure; human annotation is in progress.</p>
-    </div>
-
-    <ul class="prose">
-      <li>In all five models, the autism prompt raised readability by <strong>10 to 36 points</strong> and lowered key-point coverage by <strong>8 to 31 percentage points</strong>. More answers were flagged as under-explained.</li>
-      <li>The plain-and-explicit prompt barely moved readability. So the jump in “easy” scores comes with the autism label, not with a request for clear writing.</li>
-      <li>The open-weight 8B models (Llama 3.1, Qwen3) show the largest shifts. The Gemini models show the same direction, with smaller coverage losses.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>One example</h2>
-    <p class="question"><span class="label">Question</span><br>Explain how turn-taking norms, status, and contextualization cues jointly shape engagement judgments.</p>
-    <div class="example">
-      <div class="answer neu">
-        <span class="label k-neu">Neutral prompt</span>
-        <div class="stats"><span><b>682</b> words</span><span>readability <b>48</b></span><span>key points <b>4 / 4</b></span></div>
-        <ul class="kps">
-          <li class="hit">Communities differ in what counts as appropriate overlap or silence</li>
-          <li class="hit">Status can make the same behaviour look engaged or withdrawn</li>
-          <li class="hit">Contextualization cues shape how silence or speech is read</li>
-          <li class="hit">Judging engagement from one participation style is unreliable</li>
-        </ul>
-        <blockquote>“In ‘high-involvement’ cultures … overlapping speech is a sign of high engagement.”</blockquote>
-      </div>
-      <div class="answer asd">
-        <span class="label k-asd">“Reader is autistic” prompt</span>
-        <div class="stats"><span><b>486</b> words</span><span>readability <b>70</b></span><span>key points <b>1 / 4</b></span></div>
-        <ul class="kps">
-          <li class="miss">Communities differ in what counts as appropriate overlap or silence</li>
-          <li class="miss">Status can make the same behaviour look engaged or withdrawn</li>
-          <li class="hit">Contextualization cues shape how silence or speech is read</li>
-          <li class="miss">Judging engagement from one participation style is unreliable</li>
-        </ul>
-        <blockquote>“Cues are the secret signals.”</blockquote>
+      <div class="panel">
+        <h3>Readability score</h3>
+        <p class="wip-muted">Flesch Reading Ease. Higher means simpler wording.</p>
+        <svg id="chart-fre" viewBox="0 0 340 236" role="img" aria-label="Readability rises under the autism prompt for all five models."></svg>
       </div>
     </div>
-    <p class="prose small muted">Gemini 3 Flash (preview). The autism-prompt answer presents one fixed set of rules. It drops the point that these norms vary between communities, and the point that one participation style is a poor basis for judging engagement. For an autistic reader, those are arguably the most useful parts of the answer.</p>
-  </section>
+    <p id="fig-cap" class="wip-muted">Mean over 32 questions per prompt for each model (96 answers per model). Pro was collected through the Gemini web app, not the API. Coverage uses a provisional word-matching measure; human annotation is in progress.</p>
+  </div>
 
-  <section class="prose">
-    <h2>Groundwork: how AI text differs from human text</h2>
-    <p>Before the prompt study, I compared human and AI answers to the same questions in two public corpora (HC3, about 23,000 question pairs; M4, across Reddit, Wikipedia, WikiHow and arXiv).</p>
-    <ul>
-      <li>ChatGPT-style answers have deeper, more nested sentences and more subordinate clauses than human answers to the same question.</li>
-      <li>They use more scalar words like “some”, “often” and “most”, which leave the exact meaning for the reader to infer.</li>
-      <li>Older or smaller models (Flan-T5, Dolly, Cohere) often go the other way, so “AI text” is not one style.</li>
-    </ul>
-  </section>
+  <ul>
+    <li>In all five models, the autism prompt raised readability by <strong>10 to 36 points</strong> and lowered key-point coverage by <strong>8 to 31 percentage points</strong>. More answers were flagged as under-explained.</li>
+    <li>The plain-and-explicit prompt barely moved readability. So the jump in “easy” scores comes with the autism label, not with a request for clear writing.</li>
+    <li>The open-weight 8B models (Llama 3.1, Qwen3) show the largest shifts. The Gemini models show the same direction, with smaller coverage losses.</li>
+  </ul>
 
-  <section>
-    <h2>Where things stand</h2>
-    <div class="status-wrap">
-      <table class="status-table">
-        <tbody>
-          <tr><td><span class="tag done">Done</span></td><td>Human vs AI text comparison across HC3 and M4</td></tr>
-          <tr><td><span class="tag done">Done</span></td><td>Three-prompt comparison across five models, 32 questions each</td></tr>
-          <tr><td><span class="tag prog">In progress</span></td><td>Human annotation of key-point coverage, to replace the word-matching measure (annotator manual drafted)</td></tr>
-          <tr><td><span class="tag prog">In progress</span></td><td>Do models know the rules they don’t follow? Comparing what a model says makes text accessible with what its own “autism-friendly” output does</td></tr>
-          <tr><td><span class="tag prog">In progress</span></td><td>Reading-test items where one answer is “the passage does not settle this”, screened so they can’t be answered without the passage</td></tr>
-          <tr><td><span class="tag plan">Next</span></td><td>Does saying “I am autistic” cost more than “write for an autistic reader”? Measuring lost content with proposition-level entailment</td></tr>
-          <tr><td><span class="tag plan">Design</span></td><td>A measure that can tell a stated logical link from an implied one, tested on minimal pairs that ordinary readability scores rate as identical</td></tr>
-          <tr><td><span class="tag block">Waiting</span></td><td>Online reading study with autistic and non-autistic adults. Protocol and IRB draft are written; I am looking for an autism-experienced advisor before submitting.</td></tr>
-        </tbody>
-      </table>
+  <h2>One example</h2>
+  <p class="question"><span class="wip-label">Question</span><br>Explain how turn-taking norms, status, and contextualization cues jointly shape engagement judgments.</p>
+  <div class="example">
+    <div class="answer neu">
+      <span class="wip-label k-neu">Neutral prompt</span>
+      <div class="stats"><span><b>682</b> words</span><span>readability <b>48</b></span><span>key points <b>4 / 4</b></span></div>
+      <ul class="kps">
+        <li class="hit">Communities differ in what counts as appropriate overlap or silence</li>
+        <li class="hit">Status can make the same behaviour look engaged or withdrawn</li>
+        <li class="hit">Contextualization cues shape how silence or speech is read</li>
+        <li class="hit">Judging engagement from one participation style is unreliable</li>
+      </ul>
+      <blockquote>“In ‘high-involvement’ cultures … overlapping speech is a sign of high engagement.”</blockquote>
     </div>
-  </section>
+    <div class="answer asd">
+      <span class="wip-label k-asd">“Reader is autistic” prompt</span>
+      <div class="stats"><span><b>486</b> words</span><span>readability <b>70</b></span><span>key points <b>1 / 4</b></span></div>
+      <ul class="kps">
+        <li class="miss">Communities differ in what counts as appropriate overlap or silence</li>
+        <li class="miss">Status can make the same behaviour look engaged or withdrawn</li>
+        <li class="hit">Contextualization cues shape how silence or speech is read</li>
+        <li class="miss">Judging engagement from one participation style is unreliable</li>
+      </ul>
+      <blockquote>“Cues are the secret signals.”</blockquote>
+    </div>
+  </div>
+  <p class="wip-muted">Gemini 3 Flash (preview). The autism-prompt answer presents one fixed set of rules. It drops the point that these norms vary between communities, and the point that one participation style is a poor basis for judging engagement. For an autistic reader, those are arguably the most useful parts of the answer.</p>
 
-  <section class="prose">
-    <h2>What I’m not claiming yet</h2>
-    <ul>
-      <li>Readability scores are surface measures. Higher scores don’t show that a text is easier for autistic readers, and lower coverage doesn’t yet show they understand less. The reading study is what will test that.</li>
-      <li>Coverage is currently measured by word matching against expected key points, which can miss paraphrases.</li>
-      <li>Gemini Pro answers came from the web app, where about a third included images, tables or interactive elements that weren’t scored.</li>
-    </ul>
-  </section>
+  <h2>Groundwork: how AI text differs from human text</h2>
+  <p>Before the prompt study, I compared human and AI answers to the same questions in two public corpora (HC3, about 23,000 question pairs; M4, across Reddit, Wikipedia, WikiHow and arXiv).</p>
+  <ul>
+    <li>ChatGPT-style answers have deeper, more nested sentences and more subordinate clauses than human answers to the same question.</li>
+    <li>They use more scalar words like “some”, “often” and “most”, which leave the exact meaning for the reader to infer.</li>
+    <li>Older or smaller models (Flan-T5, Dolly, Cohere) often go the other way, so “AI text” is not one style.</li>
+  </ul>
+
+  <h2>Where things stand</h2>
+  <div class="status-wrap">
+    <table class="status-table">
+      <tbody>
+        <tr><td><span class="tag done">Done</span></td><td>Human vs AI text comparison across HC3 and M4</td></tr>
+        <tr><td><span class="tag done">Done</span></td><td>Three-prompt comparison across five models, 32 questions each</td></tr>
+        <tr><td><span class="tag prog">In progress</span></td><td>Human annotation of key-point coverage, to replace the word-matching measure (annotator manual drafted)</td></tr>
+        <tr><td><span class="tag prog">In progress</span></td><td>Do models know the rules they don’t follow? Comparing what a model says makes text accessible with what its own “autism-friendly” output does</td></tr>
+        <tr><td><span class="tag prog">In progress</span></td><td>Reading-test items where one answer is “the passage does not settle this”, screened so they can’t be answered without the passage</td></tr>
+        <tr><td><span class="tag plan">Next</span></td><td>Does saying “I am autistic” cost more than “write for an autistic reader”? Measuring lost content with proposition-level entailment</td></tr>
+        <tr><td><span class="tag plan">Design</span></td><td>A measure that can tell a stated logical link from an implied one, tested on minimal pairs that ordinary readability scores rate as identical</td></tr>
+        <tr><td><span class="tag block">Waiting</span></td><td>Online reading study with autistic and non-autistic adults. Protocol and IRB draft are written; I am looking for an autism-experienced advisor before submitting.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What I’m not claiming yet</h2>
+  <ul>
+    <li>Readability scores are surface measures. Higher scores don’t show that a text is easier for autistic readers, and lower coverage doesn’t yet show they understand less. The reading study is what will test that.</li>
+    <li>Coverage is currently measured by word matching against expected key points, which can miss paraphrases.</li>
+    <li>Gemini Pro answers came from the web app, where about a third included images, tables or interactive elements that weren’t scored.</li>
+  </ul>
 
   <section class="ask">
     <h2>How you can help</h2>
@@ -272,18 +117,72 @@ footer { border-top: 1px solid var(--rule); padding-top: 16px; display: grid; ga
       </div>
     </div>
     <div class="contact">
-      <span class="label">Contact</span>
+      <span class="wip-label">Contact</span>
       <span class="addr" id="addr">minyf42@gmail.com</span>
       <button type="button" id="copy">Copy</button>
-      <span class="small muted" id="copy-msg" aria-live="polite"></span>
+      <span class="wip-muted" id="copy-msg" aria-live="polite"></span>
     </div>
   </section>
 
-  <footer class="small muted">
-    <p>Preregistration and preprint links will be added here when available.</p>
-    <p>Models: Gemini 3.1 Flash-Lite, Gemini 3 Flash (preview), Gemini 3.1 Pro (web app), Llama 3.1 8B, Qwen3 8B (thinking off). Collected July 2026.</p>
-  </footer>
-</main>
+  <p class="wip-muted">Preregistration and preprint links will be added here when available.</p>
+  <p class="wip-muted">Models: Gemini 3.1 Flash-Lite, Gemini 3 Flash (preview), Gemini 3.1 Pro (web app), Llama 3.1 8B, Qwen3 8B (thinking off). Collected July 2026.</p>
+</div>
+
+<style>
+  .wip .wip-muted { color: var(--global-text-color-light); font-size: 0.95rem; }
+  .wip .wip-label { color: var(--global-text-color-light); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .wip .k-neu { color: var(--global-theme-color); }
+  .wip .k-asd { color: #c2410c; }
+  html[data-theme="dark"] .wip .k-asd { color: #f0a07c; }
+
+  .wip .figure { background: var(--global-card-bg-color); border: 1px solid var(--global-divider-color); border-radius: 2px; padding: 1.25rem; margin: 1.5rem 0; }
+  .wip .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-bottom: 0.8rem; color: var(--global-text-color-light); font-size: 0.9rem; }
+  .wip .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .wip .dot { width: 0.7rem; height: 0.7rem; border-radius: 50%; display: inline-block; }
+  .wip .dot.neu { background: var(--global-theme-color); }
+  .wip .dot.asd { background: #c2410c; }
+  html[data-theme="dark"] .wip .dot.asd { background: #f0a07c; }
+  .wip .dot.plain { border: 2px solid var(--global-text-color-light); background: transparent; }
+  .wip .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+  .wip .panel svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .wip .panel svg text { fill: var(--global-text-color-light); font-size: 11px; }
+  .wip .panel svg .model { fill: var(--global-text-color); font-size: 12.5px; }
+  .wip .panel svg .grid { stroke: var(--global-divider-color); stroke-width: 1; }
+  .wip .panel svg .link { stroke: var(--global-text-color-light); stroke-width: 2; opacity: 0.7; }
+  .wip .panel svg .neu { fill: var(--global-theme-color); }
+  .wip .panel svg .asd { fill: #c2410c; }
+  html[data-theme="dark"] .wip .panel svg .asd { fill: #f0a07c; }
+  .wip .panel svg .plain { fill: var(--global-card-bg-color); stroke: var(--global-text-color-light); stroke-width: 1.6; }
+
+  .wip .question { background: var(--global-code-bg-color); padding: 0.75rem 1rem; margin-bottom: 1rem; }
+  .wip .example { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+  .wip .answer { border: 1px solid var(--global-divider-color); background: var(--global-card-bg-color); padding: 1rem; }
+  .wip .answer.neu { border-top: 3px solid var(--global-theme-color); }
+  .wip .answer.asd { border-top: 3px solid #c2410c; }
+  html[data-theme="dark"] .wip .answer.asd { border-top-color: #f0a07c; }
+  .wip .stats { display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; margin: 0.6rem 0; color: var(--global-text-color-light); font-size: 0.85rem; }
+  .wip .stats b { color: var(--global-text-color); }
+  .wip .kps { list-style: none; padding: 0; margin: 0 0 0.8rem; }
+  .wip .kps li { display: grid; grid-template-columns: 1.3em 1fr; gap: 0.25rem; margin: 0.3rem 0; }
+  .wip .kps .hit::before { content: "✓"; color: var(--global-tip-block-text); font-weight: 700; }
+  .wip .kps .miss { color: var(--global-text-color-light); }
+  .wip .kps .miss::before { content: "✗"; color: var(--global-danger-block); font-weight: 700; }
+  .wip .answer blockquote { margin: 0; padding: 0.4rem 0.8rem; font-size: 0.95rem; background: transparent; }
+
+  .wip .status-wrap { overflow-x: auto; }
+  .wip .status-table td:first-child { width: 7.5em; white-space: nowrap; }
+  .wip .tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; padding: 0.15rem 0.4rem; }
+  .wip .tag.done { background: var(--global-tip-block-bg); color: var(--global-tip-block-text); }
+  .wip .tag.prog { background: var(--global-warning-block-bg); color: var(--global-warning-block-text); }
+  .wip .tag.plan { background: var(--global-code-bg-color); color: var(--global-theme-color); }
+  .wip .tag.block { background: var(--global-danger-block-bg); color: var(--global-danger-block-text); }
+
+  .wip .ask { border: 1px solid var(--global-divider-color); border-left: 4px solid var(--global-theme-color); padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .wip .ask-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .wip .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin-top: 0.5rem; }
+  .wip .addr { background: var(--global-code-bg-color); padding: 0.15rem 0.45rem; }
+  .wip button { font: inherit; color: var(--global-theme-color); background: transparent; border: 1px solid var(--global-theme-color); padding: 0.2rem 0.6rem; cursor: pointer; }
+</style>
 
 <script>
 (function () {
@@ -337,5 +236,3 @@ footer { border-top: 1px solid var(--rule); padding-top: 16px; display: grid; ga
   });
 })();
 </script>
-</body>
-</html>
