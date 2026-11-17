@@ -7,7 +7,7 @@ categories: essays
 related_posts: false
 meta: "Estimated reading time: 9 min"
 _styles: >
-  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&family=Noto+Serif+SC:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&family=Noto+Serif+SC:wght@400;600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+SC:wght@400;600&display=swap');
 
   html[data-theme='dark'] body { --global-theme-color: #d9a86c; --global-hover-color: #e8c08f; --global-text-color: #e4dfd6; --global-text-color-light: #9a948a; }
 
@@ -19,25 +19,51 @@ _styles: >
 
   .post-meta, .post-tags { font-size: 0.85rem; color: var(--global-text-color-light); }
 
-  .post-content { font-family: 'Source Serif 4', 'Noto Serif SC', Georgia, serif; font-size: 1.12rem; line-height: 1.8; max-width: none; }
+  .post-content { font-family: var(--rd-font, 'Source Serif 4', 'Noto Serif SC', Georgia, serif); font-size: var(--rd-size, 18px); line-height: var(--rd-lh, 1.8); letter-spacing: var(--rd-ls, 0); word-spacing: var(--rd-ws, 0); max-width: var(--rd-w, none); }
+
+  .reading-controls { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 0.85rem; line-height: 1.4; letter-spacing: 0; word-spacing: 0; margin: -1.5rem 0 2.5rem; }
+
+  .rc-toggle { background: transparent; border: 1px solid var(--global-divider-color); color: var(--global-text-color-light); border-radius: 999px; padding: 0.3em 0.9em; cursor: pointer; }
+
+  .rc-toggle:hover, .rc-toggle[aria-expanded='true'] { color: var(--global-theme-color); border-color: var(--global-theme-color); }
+
+  .rc-panel { margin-top: 0.75rem; padding: 1rem 1.2rem; border: 1px solid var(--global-divider-color); border-radius: 8px; display: grid; gap: 0.7rem; max-width: 30rem; }
+
+  .rc-panel[hidden] { display: none; }
+
+  .rc-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+  .rc-label { color: var(--global-text-color-light); }
+
+  .rc-group { display: inline-flex; border: 1px solid var(--global-divider-color); border-radius: 6px; overflow: hidden; align-items: center; }
+
+  .rc-group button, .rc-reset { background: transparent; border: 0; color: var(--global-text-color); padding: 0.35em 0.8em; cursor: pointer; font: inherit; }
+
+  .rc-group button + button { border-left: 1px solid var(--global-divider-color); }
+
+  .rc-group button[aria-pressed='true'] { background: var(--global-theme-color); color: var(--global-bg-color); }
+
+  .rc-value { padding: 0 0.6em; min-width: 3.2em; text-align: center; color: var(--global-text-color-light); border-left: 1px solid var(--global-divider-color); border-right: 1px solid var(--global-divider-color); }
+
+  .rc-reset { justify-self: start; color: var(--global-text-color-light); text-decoration: underline; padding-left: 0; }
 
   .post-content p { margin-bottom: 1.4em; }
 
   .post-content strong, .post-content b { font-weight: 600; }
 
-  .post-content h2 { font-family: inherit; font-size: 1.45rem; font-weight: 600; margin-top: 2.8em; margin-bottom: 0.8em; }
+  .post-content h2 { font-family: inherit; font-size: 1.35em; font-weight: 600; margin-top: 2.8em; margin-bottom: 0.8em; }
 
   .post-content a { color: var(--global-theme-color); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
   .post-content a:hover { color: var(--global-hover-color); }
 
-  .post-content blockquote { background: transparent; border-left: 2px solid var(--global-theme-color); margin: 0.5em 0 3em; padding: 0.1em 0 0.1em 1.4em; font-size: 1rem; line-height: 1.85; color: var(--global-text-color-light); }
+  .post-content blockquote { background: transparent; border-left: 2px solid var(--global-theme-color); margin: 0.5em 0 3em; padding: 0.1em 0 0.1em 1.4em; font-size: 0.9em; line-height: 1.85; color: var(--global-text-color-light); }
 
   .post-content blockquote p { margin-bottom: 1em; }
 
-  .post-content blockquote p:last-child { margin-bottom: 0; font-size: 0.9rem; }
+  .post-content blockquote p:last-child { margin-bottom: 0; font-size: 0.9em; }
 
-  .post-content blockquote.block-warning, .post-content blockquote.block-tip { border-left-width: 3px; border-radius: 4px; padding: 0.9em 1.2em; margin: 1.5em 0 2em; font-size: 0.95rem; }
+  .post-content blockquote.block-warning, .post-content blockquote.block-tip { border-left-width: 3px; border-radius: 4px; padding: 0.9em 1.2em; margin: 1.5em 0 2em; font-size: 0.88em; }
 
   .post-content blockquote.block-warning p:last-child, .post-content blockquote.block-tip p:last-child { font-size: inherit; }
 
@@ -47,6 +73,72 @@ _styles: >
 
   #toc-sidebar .nav-link.active { color: var(--global-theme-color); font-weight: 600; }
 ---
+
+<div class="reading-controls" markdown="0">
+  <button type="button" class="rc-toggle" aria-expanded="false" aria-controls="rc-panel">Aa&nbsp; Reading settings</button>
+  <div id="rc-panel" class="rc-panel" role="group" aria-label="Reading settings" hidden>
+    <div class="rc-row"><span class="rc-label">Text size</span><div class="rc-group"><button type="button" class="rc-size" data-step="-1" aria-label="Smaller text">A&minus;</button><span class="rc-value" id="rc-size-val" aria-live="polite"></span><button type="button" class="rc-size" data-step="1" aria-label="Larger text">A+</button></div></div>
+    <div class="rc-row"><span class="rc-label">Line spacing</span><div class="rc-group" data-key="lh"><button type="button" data-v="1.5">Tight</button><button type="button" data-v="1.8">Normal</button><button type="button" data-v="2.1">Loose</button></div></div>
+    <div class="rc-row"><span class="rc-label">Letter spacing</span><div class="rc-group" data-key="ls"><button type="button" data-v="0">Normal</button><button type="button" data-v="0.04">Wide</button><button type="button" data-v="0.08">Wider</button></div></div>
+    <div class="rc-row"><span class="rc-label">Line width</span><div class="rc-group" data-key="w"><button type="button" data-v="38rem">Narrow</button><button type="button" data-v="48rem">Medium</button><button type="button" data-v="none">Full</button></div></div>
+    <div class="rc-row"><span class="rc-label">Font</span><div class="rc-group" data-key="font"><button type="button" data-v="serif">Serif</button><button type="button" data-v="sans">Sans</button></div></div>
+    <button type="button" class="rc-reset">Reset to defaults</button>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'reading-prefs-v1';
+  var DEF = { size: 18, lh: '1.8', ls: '0', w: 'none', font: 'serif' };
+  var FONTS = {
+    serif: "'Source Serif 4', 'Noto Serif SC', Georgia, serif",
+    sans: "'Atkinson Hyperlegible', 'Noto Sans SC', system-ui, sans-serif"
+  };
+  var s = Object.assign({}, DEF);
+  try { Object.assign(s, JSON.parse(localStorage.getItem(KEY) || 'null') || {}); } catch (e) {}
+  var root = document.querySelector('.post-content');
+  var box = document.querySelector('.reading-controls');
+  if (!root || !box) return;
+  var toggle = box.querySelector('.rc-toggle');
+  var panel = box.querySelector('.rc-panel');
+  function apply() {
+    root.style.setProperty('--rd-size', s.size + 'px');
+    root.style.setProperty('--rd-lh', s.lh);
+    root.style.setProperty('--rd-ls', s.ls + 'em');
+    root.style.setProperty('--rd-ws', (parseFloat(s.ls) * 2) + 'em');
+    root.style.setProperty('--rd-w', s.w);
+    root.style.setProperty('--rd-font', FONTS[s.font] || FONTS.serif);
+    box.querySelector('#rc-size-val').textContent = s.size + 'px';
+    box.querySelectorAll('.rc-group[data-key]').forEach(function (g) {
+      g.querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.v === String(s[g.dataset.key])));
+      });
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  toggle.addEventListener('click', function () {
+    var open = panel.hidden;
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  box.querySelectorAll('.rc-size').forEach(function (b) {
+    b.addEventListener('click', function () {
+      s.size = Math.min(26, Math.max(14, s.size + Number(b.dataset.step)));
+      apply();
+    });
+  });
+  box.querySelectorAll('.rc-group[data-key] button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      s[b.parentElement.dataset.key] = b.dataset.v;
+      apply();
+    });
+  });
+  box.querySelector('.rc-reset').addEventListener('click', function () {
+    s = Object.assign({}, DEF);
+    apply();
+  });
+  apply();
+})();
+</script>
 
 > 他（卡尔·刘易斯）知道奥林匹斯山上的神火为何而燃烧，那不是为了一个人把另一个人打败，而是为了有机会向诸神炫耀人类的不屈，命定的局限尽可永在，不屈的挑战却不可须臾或缺。
 >
