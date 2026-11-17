@@ -1,0 +1,11 @@
+---
+layout: page
+title: "Cross-linguistic influences on English phonological and morphological network organization in children"
+permalink: /papers/bilingualism-gimme/
+nav: false
+sitemap: false
+---
+
+**Fan, M., Zhang, K., Sun, X., Tardif, T., & Kovelman, I.**
+
+Children who grow up with two languages bring a second language system to the task of learning to read in English. Behavioral work shows that phonological and morphological awareness transfer across languages, but how a bilingual child’s brain organizes these processes, and whether that organization depends on how similar the two languages are, is less clear. This study uses functional near-infrared spectroscopy (fNIRS) to compare language-network dynamics in three groups of children aged [5–11]: English monolinguals, Spanish–English bilinguals, and Chinese–English bilinguals. Children completed English phonological awareness and morphological awareness tasks while hemodynamic activity was recorded over bilateral frontal (inferior and middle frontal gyri) and temporal (middle and superior temporal gyri) regions. To estimate person-specific directed connectivity among 12 regions of interest, we apply Group Iterative Multiple Model Estimation (GIMME). GIMME recovers connections shared by the whole sample, by each language group, and by individual children, without assuming that every child’s network looks the same. Because pediatric fNIRS data vary widely in quality, we also built a transparent, preregistered-style preprocessing and quality-control pipeline. It covers motion correction, channel-level signal-quality checks such as scalp coupling and signal-to-noise ratio, and age-matched sensitivity analyses, and it tests whether signal quality itself differs across groups. Final sample contains three groups of children (N = 261) aged 5–11: English monolinguals, Spanish-English bilinguals, and Chinese-English bilinguals. Analyses are ongoing. We will test whether the two bilingual groups differ from monolinguals, and from each other, in the frontotemporal connections recruited during phonological and morphological processing. These comparisons bear on theories of cross-linguistic transfer and on how individualized network models can be used in developmental neuroimaging.
