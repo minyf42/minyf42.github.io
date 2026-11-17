@@ -64,9 +64,33 @@ _styles: >
 
   .post-content mark { background: transparent; color: inherit; padding: 0; }
 
+  summary.references { margin: 0; padding: 0; border: 0; }
+
+  details.references { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--global-divider-color); font-size: 0.8em; line-height: 1.6; color: var(--global-text-color-light); }
+
+  .references summary { cursor: pointer; list-style: none; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--global-text-color-light); }
+
+  .references summary::-webkit-details-marker { display: none; }
+
+  .references summary::before { content: '\25B8\00a0'; }
+
+  .references[open] summary::before { content: '\25BE\00a0'; }
+
+  .references summary:hover { color: var(--global-theme-color); }
+
+  .references ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+
+  .references li { padding-left: 1.6em; text-indent: -1.6em; margin-bottom: 0.55em; }
+
+  .references a { color: inherit; text-decoration-color: var(--global-divider-color); }
+
+  .references a:hover { color: var(--global-theme-color); }
+
   #toc-sidebar .nav-link { font-size: 0.85rem; line-height: 1.45; color: var(--global-text-color-light); }
 
   #toc-sidebar .nav-link.active { color: var(--global-theme-color); font-weight: 600; }
+
+  .post-content h2.references { margin-top: 6.5rem; }
 ---
 
 <div class="reading-controls" markdown="0" data-subtitle="{{ page.description | escape }}">
@@ -202,7 +226,9 @@ Sisyphus is remembered for the boulder, but less often for why he was given it: 
 
 Camus asks us to imagine Sisyphus happy. I can, as long as each push leaves footprints on ground that had no path, so that the next woman the picture misses has a direction: a path to follow, or a pitfall to avoid. I hope she steps over my struggles, reaches higher than I could, and one day escapes the loop.
 
-## References
+<details class="references" markdown="1">
+<summary>References (19)</summary>
+{: .references}
 
 - Camus, A. (1942). *The myth of Sisyphus*. (English translation by J. O'Brien, 1955.) [Open Library](https://openlibrary.org/isbn/9780679733737)
 - DiPrete, T. A., & Eirich, G. M. (2006). Cumulative advantage as a mechanism for inequality: A review of theoretical and empirical developments. *Annual Review of Sociology, 32*, 271–297. [doi:10.1146/annurev.soc.32.061604.123127](https://doi.org/10.1146/annurev.soc.32.061604.123127)
@@ -223,3 +249,5 @@ Camus asks us to imagine Sisyphus happy. I can, as long as each push leaves foot
 - Shaywitz, S. E., Shaywitz, B. A., Fletcher, J. M., & Escobar, M. D. (1990). Prevalence of reading disability in boys and girls: Results of the Connecticut Longitudinal Study. *JAMA, 264*(8), 998–1002. [PubMed](https://pubmed.ncbi.nlm.nih.gov/2376893/)
 - Shi, T. (史铁生). 《我的梦想》 [My dream]. Essay.
 - Warrier, V., Greenberg, D. M., Weir, E., et al. (2020). Elevated rates of autism, other neurodevelopmental and psychiatric diagnoses, and autistic traits in transgender and gender-diverse individuals. *Nature Communications, 11*, 3959. [doi:10.1038/s41467-020-17794-1](https://doi.org/10.1038/s41467-020-17794-1)
+
+</details>
