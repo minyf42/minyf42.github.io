@@ -10,7 +10,7 @@ profile:
   image_circular: false
 
 selected_papers: false # no selected publications yet
-social: false # placeholder social icons are off until real links are added
+social: true
 
 announcements:
   enabled: true # includes a list of news items

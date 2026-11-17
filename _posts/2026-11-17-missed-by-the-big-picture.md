@@ -172,7 +172,7 @@ _styles: >
 
 One autistic woman I interviewed could not follow lectures in college. The lectures moved faster than she could assemble the logic, and no one suggested that she might simply process information differently. She concluded that she was not smart enough. So she taught herself, top-down from an outline and at her own pace, and she has now spent more than five years in one of the most competitive fields in finance. She found her route. What stays with me is how much of it she had to find alone. Others I interviewed had less room to find theirs; several changed jobs almost every year.
 
-*Accounts come from pilot interviews conducted in Fall 2026, ahead of a full ethnographic study planned for Spring 2027. They are shared with permission, and identifying details have been changed.*
+*Accounts come from pilot interviews conducted in Fall 2026 and from women I know in the community, ahead of a full ethnographic study planned for Spring 2027. They are shared with permission; some are combined, and identifying details have been changed.*
 
 ## Missed by a stereotype
 
@@ -182,7 +182,7 @@ Part of the reason is how girls are socialized to handle difficulty. They are ex
 
 ## A cost paid more than once
 
-The stereotype fails the people it leaves out more than once. First it withholds a diagnosis, and without a diagnosis there is no support, only more hours spent compensating, until the effort itself turns into burnout. Then, even when a woman has worked out exactly where she needs an accommodation, her request is more likely to be dismissed as a lazy excuse. One woman, diagnosed only after she was hired, disclosed it at work. She was told they would not have hired her had they known; within months she was placed on a performance plan and let go.
+The stereotype fails the people it leaves out more than once. First it withholds a diagnosis, and without a diagnosis there is no support, only more hours spent compensating, until the effort itself turns into burnout. It is Sisyphean work: the effort must be paid again each day, and none of it makes the hill any lower. Then, even when a woman has worked out exactly where she needs an accommodation, her request is more likely to be dismissed as a lazy excuse, because she does not look the way the stereotype says an autistic or dyslexic person should. Being recognized is no safer. In two cases I know closely, the story ran the same way. Each woman was placed on a performance plan at work. The strain led to depression, and in seeking help, she learned for the first time that she was autistic. Each realized that the problems the plan listed were exactly the ones accommodations could address, disclosed her diagnosis, and asked for support. Both were told the company would not have hired them had it known, and both left within months.
 
 The same pattern appears at scale. In research with Prof. Julia Hur on U.S. workplace discrimination charges, we found that discrimination against people with cognitive disabilities is among the hardest for complaint systems to recognize, in part because others assume such a disability could be overcome with more effort. It appears in machines too: when I told language models that a reader was autistic, their explanations became 25 to 30% shorter while still passing as more readable. People and models alike respond to the label, not to the person.
 
@@ -190,7 +190,7 @@ Sociologists have a precise account of how this happens. Bruce Link and Jo Phela
 
 ## A smaller safety margin
 
-My own reading difficulty was cushioned: my family could afford tutors, and I had strengths that let me compensate for years. For women with a smaller safety margin, difficulties like these can be unbearable.
+My own boulder was lighter: my family could afford tutors, and I had strengths that let me compensate for years. For women with a smaller safety margin, the same climb can be unbearable.
 
 ## What can be controlled, and what cannot
 
